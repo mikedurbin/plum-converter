@@ -6,7 +6,15 @@ edited and then converted back in plum database text files.
 
 ## Compilation
 
+### Build Dependencies
+
+* java (version 5 or higher)
+* maven (version 3 or higher)
+
+To build the application, simply type: 
+
 	mvn package
+
 	
 ## Running
 
@@ -24,3 +32,5 @@ select spreadsheets that will be converted back.
 
 ### Caveats
 
+* All cells in the spreadsheet are formatted as strings (whether they're numeric or not) and should be left that way.
+* The spreadsheet rows should be sorted by "original order" column if order is to be retained.
