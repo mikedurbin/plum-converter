@@ -33,49 +33,10 @@ public class PlumTXTToSpreadsheet {
     public static final Pattern FIELD_PATTERN = Pattern.compile("([A-Z0-9]{3})(.*)");
 
     public static void main(String [] args) throws IOException {
-        
+
         File sourceDir = new File(args[0]);
         File outputDir = new File(args[1]);
         for (File f : sourceDir.listFiles()) {
-            /*
-            FileInputStream fis = new FileInputStream(f);
-            BufferedReader r = new BufferedReader(new InputStreamReader(fis, "ISO-8859-1"));
-    
-            Workbook wb = new HSSFWorkbook();
-    
-            Map<List<String>, Sheet> sheetMap = new HashMap<List<String>, Sheet>();
-    
-            int count = 0;
-            String line = null;
-            while ((line = r.readLine()) != null) {
-                List<String> c = new ArrayList<String>();
-                c.add("original order");
-                List<String> values = new ArrayList<String>();
-                values.add(String.valueOf(count));
-                count ++;
-                for (String field : line.split("\\Q" + FIELD_DELIMITER + "\\E")) {
-                    Matcher m = FIELD_PATTERN.matcher(field);
-                    if (m.matches()) {
-                        c.add(m.group(1));
-                        values.add(m.group(2));
-                    } else {
-                        throw new RuntimeException("\"" + field + "\" does not have a field code!");
-                    }
-                }
-                
-                Sheet s = sheetMap.get(c);
-                if (s == null) {
-                    s = wb.createSheet(WorkbookUtil.createSafeSheetName("Type " + sheetMap.size()));
-                    appendRow(s, c);
-                    sheetMap.put(c, s);
-                }
-                appendRow(s, values);
-            }
-            String outputFilename = f.getName().replace(".txt", ".xls");
-            FileOutputStream fos = new FileOutputStream(new File(outputDir, outputFilename));
-            wb.write(fos);
-            fos.close();
-            */
             if (f.getName().endsWith(".txt")) {
                 convertText(f);
             }
